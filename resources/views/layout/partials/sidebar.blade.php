@@ -1,48 +1,23 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary position-fixed top-0 bottom-0" style="width: 280px">
-    <ul class="nav nav-pills flex-column mb-auto mt-5 pt-4">
-        <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">
-                <svg class="bi pe-none me-2" width="16" height="16">
-                    <use xlink:href="#home" />
-                </svg>
-                Home
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link link-body-emphasis">
-                <svg class="bi pe-none me-2" width="16" height="16">
-                    <use xlink:href="#speedometer2" />
-                </svg>
-                Dashboard
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link link-body-emphasis">
-                <svg class="bi pe-none me-2" width="16" height="16">
-                    <use xlink:href="#table" />
-                </svg>
-                Orders
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link link-body-emphasis">
-                <svg class="bi pe-none me-2" width="16" height="16">
-                    <use xlink:href="#grid" />
-                </svg>
-                Products
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link link-body-emphasis">
-                <svg class="bi pe-none me-2" width="16" height="16">
-                    <use xlink:href="#people-circle" />
-                </svg>
-                Customers
-            </a>
-        </li>
-    </ul>
+    <div class="mb-auto" style="margin-top: 80px">
+        <div class="" style="max-height: 430px; overflow: auto">
+            @foreach ($users as $user)
+                <a
+                    href="#"class="width-100 bg-info bg-opacity-50 rounded-pill d-flex align-items-center gap-3 overflow-hidden mt-3 text-decoration-none card-avatar">
+                    <img class="rounded-circle" src="https://github.com/mdo.png" alt="" width="55"
+                        height="55">
+                    <div class="">
+                        <h6 class="text-light mb-0">{{ $user->name }}</h6>
+                        <p class="mb-0 fs-6 text-light">{{ $user->username }}</p>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </div>
+
+
     <hr />
-    <div class="dropdown">
+    <div class="dropdown ">
         <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle"
             data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="" width="32" height="32"
@@ -50,7 +25,7 @@
             <strong>mdo</strong>
         </a>
         <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">New Post ...</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li>

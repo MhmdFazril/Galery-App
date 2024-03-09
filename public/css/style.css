@@ -1,0 +1,8 @@
+.card-avatar:hover {
+    transform: translateY(-3px); /* Menggeser elemen ke atas saat hover */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Animasi transisi */
+}
+
+.card-avatar {
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Animasi transisi saat tidak di-hover */
+}
