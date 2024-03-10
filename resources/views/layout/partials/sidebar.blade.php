@@ -8,7 +8,7 @@
                         height="55">
                     <div class="">
                         <h6 class="text-light mb-0">{{ $user->name }}</h6>
-                        <p class="mb-0 fs-6 text-light">{{ $user->username }}</p>
+                        <p class="mb-0 fs-6 text-light fst-italic">{{ $user->username }}</p>
                     </div>
                 </a>
             @endforeach
