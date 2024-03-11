@@ -1,8 +1,15 @@
 .card-avatar:hover {
-    transform: translateY(-3px); /* Menggeser elemen ke atas saat hover */
+    transform: translateY(-5px); /* Menggeser elemen ke atas saat hover */
     transition: box-shadow 0.3s ease, transform 0.3s ease; /* Animasi transisi */
 }
 
 .card-avatar {
     transition: box-shadow 0.3s ease, transform 0.3s ease; /* Animasi transisi saat tidak di-hover */
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
