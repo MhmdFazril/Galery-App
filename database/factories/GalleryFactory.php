@@ -16,7 +16,7 @@ class GalleryFactory extends Factory
      */
     public function definition(): array
     {
-        $caption = fake()->sentence(fake()->numberBetween(4, 8));
+        $caption = fake()->sentence(fake()->numberBetween(18, 34));
         return [
             'user_id' => fake()->numberBetween(1, 5),
             'image' => 'img/user.jpg',

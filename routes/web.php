@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Models\Gallery;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -23,11 +25,19 @@ Route::get('/', function () {
     ]);
 });
 
-// route model binding
-Route::get('/gallery/{gallery:slug}', function (Gallery $gallery) {
-    return view('dashboard.gallery', [
-        'title' => 'Gallery',
-        'users' => User::all(),
-        'gallery' => $gallery,
-    ]);
-});
+Route::get('/profile', [ProfileController::class, 'index']);
+
+Route::get('/login', [UserController::class, 'login']);
+
+Route::get('/register', [UserController::class, 'register']);
+Route::post('/register', [UserController::class, 'registStore']);
+
+// // route model binding / untuk masuk ke detail
+// // dinonaktifkan karna mencoba cara lain
+// Route::get('/gallery/{gallery:slug}', function (Gallery $gallery) {
+//     return view('dashboard.gallery', [
+//         'title' => 'Gallery',
+//         'users' => User::all(),
+//         'gallery' => $gallery,
+//     ]);
+// });
