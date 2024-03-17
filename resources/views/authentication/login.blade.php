@@ -25,25 +25,35 @@
         <!-- Form Login -->
         <div class="row justify-content-center">
             <div class="col-md-6">
+                @if (session('success'))
+                    <div class="alert alert-info" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if (session('failed'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('failed') }}
+                    </div>
+                @endif
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center mb-4">Login</h5>
-                        <form>
+                        <form action="/authentication" method="post">
+                            @csrf
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="username" class="form-control" id="username"
-                                    placeholder="Masukkan Username">
+                                <input required name="username" type="username" class="form-control" id="username"
+                                    placeholder="Masukkan Username" autofocus>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password"
+                                <input required name="password" type="password" class="form-control" id="password"
                                     placeholder="Masukkan Password">
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Login</button>
                         </form>
                         <small class="d-block text-center mt-3">Not registered? <a href="/register">Registered
                                 now</a></small>
-
                     </div>
                 </div>
             </div>

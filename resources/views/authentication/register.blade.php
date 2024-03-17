@@ -31,8 +31,8 @@
                         <form action="/register" method="post">
                             @csrf
                             <div class="mb-3">
-                                <label for="name" class="form-label">name</label>
-                                <input name="name" type="text"
+                                <label for="name" class="form-label">Name</label>
+                                <input required name="name" type="text"
                                     class="form-control @error('name') is-invalid @enderror"
                                     id="name"placeholder="Your Name" value="{{ old('name') }}">
                                 @error('name')
@@ -43,7 +43,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input name="email" type="email"
+                                <input required name="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" id="email"
                                     placeholder="Your Email" value="{{ old('email') }}">
                                 @error('email')
@@ -54,7 +54,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input name="username" type="text"
+                                <input required name="username" type="text"
                                     class="form-control @error('username') is-invalid @enderror" id="username"
                                     placeholder="Your Username" value="{{ old('username') }}">
                                 @error('username')
@@ -65,7 +65,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
-                                <input name="password" type="password"
+                                <input required name="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" id="password"
                                     placeholder="Your Password" value="{{ old('password') }}">
                                 @error('password')

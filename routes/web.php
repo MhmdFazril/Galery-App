@@ -28,6 +28,9 @@ Route::get('/', function () {
 Route::get('/profile', [ProfileController::class, 'index']);
 
 Route::get('/login', [UserController::class, 'login']);
+Route::post('/authentication', [UserController::class, 'authentication']);
+
+Route::get('/logout', [UserController::class, 'logout']);
 
 Route::get('/register', [UserController::class, 'register']);
 Route::post('/register', [UserController::class, 'registStore']);
