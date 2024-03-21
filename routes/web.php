@@ -23,24 +23,16 @@ Route::get('/', function () {
         'users' => User::all(),
         'galleries' => Gallery::all()->where('status', '=', true),
     ]);
-});
+})->middleware('auth');
 
-Route::get('/profile', [ProfileController::class, 'index']);
+Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
+Route::get('/edit-profile', [ProfileController::class, 'edit'])->middleware('auth');
+Route::post('/update-profile', [ProfileController::class, 'update'])->middleware('auth');
 
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/authentication', [UserController::class, 'authentication']);
 
 Route::get('/logout', [UserController::class, 'logout']);
 
-Route::get('/register', [UserController::class, 'register']);
+Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 Route::post('/register', [UserController::class, 'registStore']);
-
-// // route model binding / untuk masuk ke detail
-// // dinonaktifkan karna mencoba cara lain
-// Route::get('/gallery/{gallery:slug}', function (Gallery $gallery) {
-//     return view('dashboard.gallery', [
-//         'title' => 'Gallery',
-//         'users' => User::all(),
-//         'gallery' => $gallery,
-//     ]);
-// });

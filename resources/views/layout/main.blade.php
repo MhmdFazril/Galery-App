@@ -53,7 +53,7 @@
     <div class="d-flex h-100">
         @include('layout.partials.sidebar')
 
-        <div class="mt-5 pt-5 me-1" style="margin-left: 290px">
+        <div class="mt-5 pt-5 me-1 w-100" style="margin-left: 290px">
             @yield('container')
         </div>
 

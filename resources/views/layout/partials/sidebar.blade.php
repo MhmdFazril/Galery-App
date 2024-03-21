@@ -22,7 +22,7 @@
             data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="" width="32" height="32"
                 class="rounded-circle me-2" />
-            <strong>mdo</strong>
+            <strong>{{ auth()->user()->username }}</strong>
         </a>
         <ul class="dropdown-menu text-small shadow">
             <li><a class="dropdown-item" href="#">New Post ...</a></li>
@@ -31,7 +31,27 @@
             <li>
                 <hr class="dropdown-divider" />
             </li>
-            <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+            <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign
+                    out</a></li>
         </ul>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Logout Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure want to log out?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                <a href="/logout" class="btn btn-primary">Logout</a>
+            </div>
+        </div>
     </div>
 </div>

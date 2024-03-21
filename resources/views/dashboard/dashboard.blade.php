@@ -1,7 +1,6 @@
 @extends('layout.main')
 
 @section('container')
-    {{ dump(auth()->user()) }}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-7">
@@ -31,6 +30,7 @@
             </div>
         </div>
     </div>
+
 
     <script>
         const more = document.querySelectorAll("#more")
