@@ -32,6 +32,8 @@ class UserController extends Controller
             'password' => 'required|min:8|max:255',
         ]);
         $validatedData['password'] = Hash::make($validatedData['password']);
+
+        $validatedData['image'] = '/img/user-icon.jpg';
         User::create($validatedData);
 
         return redirect('/login')->with('success', "Regist Success, Please Login");

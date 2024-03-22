@@ -33,8 +33,9 @@ class ProfileController extends Controller
 
         $rules = [
             'name' => 'required|max:255',
-            // 'username' => 'required|max:20|unique:users',
             'bio' => 'max:30',
+            'image' => 'image|file|max:1024',
+
         ];
 
         if ($request->username != auth()->user()->username) {
@@ -47,6 +48,12 @@ class ProfileController extends Controller
         }
 
         $validatedData = $request->validate($rules);
+
+        if ($request->file('image')) {
+            $user = str_replace(' ', '-', auth()->user()->name);
+
+            $validatedData['image'] = $request->file('image')->store('gallery-profile/' . $user);
+        }
 
         User::where('id', auth()->user()->id)->update($validatedData);
 

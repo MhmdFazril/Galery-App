@@ -32,7 +32,7 @@ Route::post('/update-profile', [ProfileController::class, 'update'])->middleware
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/authentication', [UserController::class, 'authentication']);
 
-Route::get('/logout', [UserController::class, 'logout']);
+Route::get('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 Route::post('/register', [UserController::class, 'registStore']);

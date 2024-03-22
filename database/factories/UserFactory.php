@@ -28,6 +28,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'username' => fake()->userName(),
             'password' => static::$password ??= Hash::make('password'),
+            'image' => '/img/user-icon.jpg',
         ];
     }
 
