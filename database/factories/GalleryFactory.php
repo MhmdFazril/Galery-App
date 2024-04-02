@@ -21,8 +21,8 @@ class GalleryFactory extends Factory
             'user_id' => fake()->numberBetween(1, 5),
             'image' => 'img/user.jpg',
             'caption' => $caption,
-            'author' => fake()->numberBetween(1, 5),
-            'slug' => str_replace(' ', '', fake()->shuffle($caption)),
+            'status' => fake()->randomElement([true, false]),
+            'slug' => str_replace(' ', '-', $caption),
         ];
     }
 }

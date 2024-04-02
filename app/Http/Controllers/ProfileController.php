@@ -51,7 +51,6 @@ class ProfileController extends Controller
 
         if ($request->file('image')) {
             $user = str_replace(' ', '-', auth()->user()->name);
-
             $validatedData['image'] = $request->file('image')->store('gallery-profile/' . $user);
         }
 
@@ -59,4 +58,10 @@ class ProfileController extends Controller
 
         return redirect('/profile')->with('update-success', 'Update Success');
     }
+
+    // public function test(Gallery $gallery)
+    // {
+    //     // return Gallery::all()->where('slug', $gallery);
+    //     return $gallery;
+    // }
 }

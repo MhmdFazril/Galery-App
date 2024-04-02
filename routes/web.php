@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddPostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\Gallery;
@@ -21,7 +22,7 @@ Route::get('/', function () {
     return view('dashboard.dashboard', [
         'title' => 'Dashboard',
         'users' => User::all(),
-        'galleries' => Gallery::all()->where('status', '=', true),
+        'galleries' => Gallery::orderBy('created_at', 'desc')->where('status', '=', true)->get(),
     ]);
 })->middleware('auth');
 
@@ -36,3 +37,7 @@ Route::get('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 Route::post('/register', [UserController::class, 'registStore']);
+
+// Route::resource('/profile/post', AddPostController::class)->middleware('auth');
+Route::get('/profile/post/create', [AddPostController::class, 'create'])->middleware('auth');
+Route::post('/profile/post/store', [AddPostController::class, 'store'])->middleware('auth');

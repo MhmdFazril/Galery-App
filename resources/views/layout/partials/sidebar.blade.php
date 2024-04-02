@@ -39,7 +39,7 @@
             <strong>{{ auth()->user()->username }}</strong>
         </a>
         <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="/add-photo">New Post ...</a></li>
+            <li><a class="dropdown-item" href="/profile/post/create">New Post ...</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><a class="dropdown-item" href="profile">Profile</a></li>
             <li>

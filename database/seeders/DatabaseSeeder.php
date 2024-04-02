@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Gallery;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -17,6 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(5)->create();
 
-        Gallery::factory(10)->create();
+        // Gallery::factory(10)->create();
     }
 }

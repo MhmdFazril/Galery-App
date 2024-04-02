@@ -6,6 +6,11 @@
                 {{ session('update-success') }}
             </div>
         @endif
+        @if (session('post-success'))
+            <div class="alert alert-info" role="alert">
+                {{ session('post-success') }}
+            </div>
+        @endif
         <div class="row align-items-center bg-body-secondary p-2">
             <div class="col-md-4 border-end border-secondary">
                 <!-- Informasi profil -->
@@ -40,14 +45,18 @@
 
         <div class="d-flex gap-3 flex-wrap">
             @foreach ($galleries as $item)
-                <div class="gallery-item overflow-hidden rounded shadow-sm" style="width: 180px; height: 180px;">
-                    <img src="{{ $item->image }}" alt="Gambar 2" class="object-fit-cover w-100 h-100">
-                </div>
+                <a href="/profile/post/{{ $item->id }}">
+                    <div class="gallery-item overflow-hidden rounded shadow-sm {{ $item->status == 1 ? 'border-success' : 'border-danger' }} border border-2"
+                        style="width: 180px; height: 180px;">
+                        <img src="{{ asset('storage/' . $item->image) }}" alt=""
+                            class="object-fit-cover w-100 h-100">
+                    </div>
+                </a>
             @endforeach
 
         </div>
         <br><br><br>
-        <a href="/add-photo" class="btn btn-info w-100 position-absolute bottom-0">Add Post +</a>
+        <a href="/profile/post/create" class="btn btn-info w-100 position-absolute bottom-0 text-light">Add Post +</a>
 
     </div>
 @endsection
