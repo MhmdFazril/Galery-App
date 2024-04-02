@@ -41,3 +41,5 @@ Route::post('/register', [UserController::class, 'registStore']);
 // Route::resource('/profile/post', AddPostController::class)->middleware('auth');
 Route::get('/profile/post/create', [AddPostController::class, 'create'])->middleware('auth');
 Route::post('/profile/post/store', [AddPostController::class, 'store'])->middleware('auth');
+Route::post('/profile/post/update', [AddPostController::class, 'update'])->middleware('auth');
+Route::get('/profile/post/destroy/{gallery:slug}', [AddPostController::class, 'destroy'])->middleware('auth');

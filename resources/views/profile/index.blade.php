@@ -11,6 +11,11 @@
                 {{ session('post-success') }}
             </div>
         @endif
+        @if (session('delete-success'))
+            <div class="alert alert-info" role="alert">
+                {{ session('delete-success') }}
+            </div>
+        @endif
         <div class="row align-items-center bg-body-secondary p-2">
             <div class="col-md-4 border-end border-secondary">
                 <!-- Informasi profil -->
@@ -45,13 +50,73 @@
 
         <div class="d-flex gap-3 flex-wrap">
             @foreach ($galleries as $item)
-                <a href="/profile/post/{{ $item->id }}">
+                <a data-bs-toggle="modal" data-bs-target="#detailModal{{ $loop->iteration }}">
                     <div class="gallery-item overflow-hidden rounded shadow-sm {{ $item->status == 1 ? 'border-success' : 'border-danger' }} border border-2"
                         style="width: 180px; height: 180px;">
                         <img src="{{ asset('storage/' . $item->image) }}" alt=""
                             class="object-fit-cover w-100 h-100">
                     </div>
                 </a>
+
+                <!-- Modal detail -->
+                <div class="modal fade" id="detailModal{{ $loop->iteration }}" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detail Post</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="profile/post/update" method="post">
+                                @csrf
+                                <div class="modal-body">
+                                    <img src="{{ asset('storage/' . $item->image) }}" alt="Gallery Image"
+                                        class="img-fluid mb-3">
+                                    <p><strong>Caption:</strong> {{ $item->caption }}</p>
+                                    <p><strong>Upload:</strong> {{ $item->created_at->diffForHumans() }}</p>
+                                    <label for="status">status private</label>
+                                    <select name="status" id="status">
+                                        <option value="1" {{ $item->status == 1 ? 'selected' : '' }}>public</option>
+                                        <option value="0" {{ $item->status == 0 ? 'selected' : '' }}>private</option>
+                                    </select>
+                                    <input type="hidden" name="status_old" value="{{ $item->status }}">
+                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <div>
+                                        <button type="submit" class="btn btn-info text-light">Update</button>
+                                        <a data-bs-toggle="modal" data-bs-target="#deleteModal{{ $loop->iteration }}"
+                                            class="btn
+                                            btn-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal logout -->
+                <div class="modal fade" id="deleteModal{{ $loop->iteration }}" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure want to delete this post?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                <a href="profile/post/destroy/{{ $item->slug }}" class="btn btn-primary">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endforeach
 
         </div>

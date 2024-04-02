@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class AddPostController extends Controller
@@ -40,5 +41,22 @@ class AddPostController extends Controller
 
         return redirect('/profile')->with('post-success', 'New post added');
 
+    }
+
+    public function update(Request $request)
+    {
+        if (!$request->status == $request->status_old) {
+            Gallery::where('id', $request->id)->update(['status' => $request->status]);
+        }
+
+        return redirect('/profile');
+    }
+
+    public function destroy(Gallery $gallery)
+    {
+        Storage::delete($gallery->image);
+        Gallery::destroy($gallery->id);
+
+        return redirect('/profile')->with('delete-success', 'post has been deleted');
     }
 }
