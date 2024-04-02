@@ -59,9 +59,15 @@ class ProfileController extends Controller
         return redirect('/profile')->with('update-success', 'Update Success');
     }
 
-    // public function test(Gallery $gallery)
-    // {
-    //     // return Gallery::all()->where('slug', $gallery);
-    //     return $gallery;
-    // }
+    public function indexUser(User $user)
+    {
+        return view('profile.indexUser', [
+            'title' => 'Profile',
+            'users' => User::all(),
+            'user' => $user,
+            'galleries' => Gallery::all()->where('user_id', $user->id),
+            'galleriesCount' => count(Gallery::all()->where('user_id', $user->id)),
+            'galleriesPublic' => count(Gallery::all()->where('user_id', $user->id)->where('status', 1)),
+        ]);
+    }
 }

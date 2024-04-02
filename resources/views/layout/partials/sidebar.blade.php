@@ -4,7 +4,7 @@
             @foreach ($users as $user)
                 @if ($user->name !== auth()->user()->name)
                     <a
-                        href="#"class="width-100 bg-info bg-opacity-50 rounded-pill d-flex align-items-center gap-3 overflow-hidden mt-3 text-decoration-none card-avatar">
+                        href="/profile/{{ $user->name }}"class="width-100 bg-info bg-opacity-50 rounded-pill d-flex align-items-center gap-3 overflow-hidden mt-3 text-decoration-none card-avatar">
 
                         @if ($user->image != '/img/user-icon.jpg')
                             <img src="{{ asset('storage/' . $user->image) }}" class="rounded-circle" alt=""
@@ -41,7 +41,7 @@
         <ul class="dropdown-menu text-small shadow">
             <li><a class="dropdown-item" href="/profile/post/create">New Post ...</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="profile">Profile</a></li>
+            <li><a class="dropdown-item" href="/profile">Profile</a></li>
             <li>
                 <hr class="dropdown-divider" />
             </li>

@@ -27,6 +27,7 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
+Route::get('/profile/{user:name}', [ProfileController::class, 'indexUser'])->middleware('auth');
 Route::get('/edit-profile', [ProfileController::class, 'edit'])->middleware('auth');
 Route::post('/update-profile', [ProfileController::class, 'update'])->middleware('auth');
 

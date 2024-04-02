@@ -9,7 +9,7 @@
                         <div class="card-avatar">
                             <div class="d-flex gap-2 w-100 align-items-center mb-2 ">
                                 @if ($gallery->user->image != '/img/user-icon.jpg')
-                                    <img src="{{ asset('storage/' . $gallery->image) }}" alt=""
+                                    <img src="{{ asset('storage/' . $gallery->user->image) }}" alt=""
                                         class="object-fit-cover rounded-circle" width="35px" height="35px">
                                 @else
                                     <img src="/img/user-icon.jpg" alt="" class="object-fit-cover rounded-circle"
